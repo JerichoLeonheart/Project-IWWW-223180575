@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Angka</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-weight: bold;
+            background-image: url('wolf.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: rgb(255, 255, 255);
+            padding-top: 50px;
+            position: relative;
+        }
+        #guess-input {
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        #time-left, #lives, #answer {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        #answer {
+            display: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #750404;
+        }
+        #link-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tebak Angka (1-10)</h1>
+    <p>Masukkan angka tebakan Anda:</p>
+    <input type="number" id="guess-input">
+    <br>
+    <button onclick="startGame()">Start</button>
+    <button onclick="checkGuess()">Guess</button>
+    <button onclick="resetGame()">Reset Game</button>
+    <p id="result"></p>
+    <p id="time-left">Time: </p>
+    <p id="lives">Live: 7</p>
+    <p id="answer">Answer: <span id="correct-answer"></span></p>
+    <a href="index.html" id="link-button"><button>Back</button></a>
+
+    <script>
+        let randomNumber;
+        let timeLeft = 20;
+        let timer;
+        let lives = 7;
+        let gameStarted = false;
+
+        function startGame() {
+            if (!gameStarted) {
+                randomNumber = Math.floor(Math.random() * 10) + 1;
+
+                timeLeft = 20;
+                document.getElementById('time-left').innerText = `Waktu Tersisa: ${timeLeft}`;
+
+                lives = 7;
+                document.getElementById('lives').innerText = `Nyawa: ${lives}`;
+
+                timer = setInterval(countdown, 1000);
+                gameStarted = true;
+
+                document.getElementById('answer').style.display = 'none';
+            }
+        }
+
+        function countdown() {
+            timeLeft--;
+            document.getElementById('time-left').innerText = `Waktu Tersisa: ${timeLeft}`;
+
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                document.getElementById('result').innerText = `Waktu telah habis!`;
+                document.getElementById('answer').style.display = 'block';
+                document.getElementById('correct-answer').innerText = randomNumber;
+                decrementLives();
+            }
+        }
+
+        function checkGuess() {
+            if (timeLeft > 0) {
+                const guess = parseInt(document.getElementById('guess-input').value);
+
+                if (guess === randomNumber) {
+                    clearInterval(timer);
+                    document.getElementById('result').innerText = 'Selamat! Anda menebak dengan benar!';
+                    document.getElementById('answer').style.display = 'block';
+                    document.getElementById('correct-answer').innerText = randomNumber;
+                } else {
+                    document.getElementById('result').innerText = 'Tebakan Anda salah, coba lagi!';
+                    decrementLives();
+                }
+            }
+        }
+
+        function resetGame() {
+            clearInterval(timer);
+            document.getElementById('guess-input').value = '';
+            document.getElementById('result').innerText = '';
+            document.getElementById('time-left').innerText = '';
+            document.getElementById('lives').innerText = '';
+            document.getElementById('answer').style.display = 'none';
+            gameStarted = false;
+        }
+
+        function decrementLives() {
+            lives--;
+            document.getElementById('lives').innerText = `Nyawa: ${lives}`;
+
+            if (lives === 0) {
+                clearInterval(timer);
+                document.getElementById('result').innerText = 'Game Over! Anda kehabisan nyawa.';
+                document.getElementById('answer').style.display = 'block';
+                document.getElementById('correct-answer').innerText = randomNumber;
+            }
+        }
+    </script>
+</body>
+</html>

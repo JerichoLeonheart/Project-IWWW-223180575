@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Games</title>
+    <link rel="stylesheet" href="favgames.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <a class="logo">Jeri<span>Web</span></a>
+          <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="SignUp.html">Sign in</a></li>
+            <li style="font-weight: bold;"><a href="fav.html">Hobby</a></li>
+            <li><a href="game.html">Tebak Angka</a></li>
+            <li><a href="game2.html">Superhero Guess</a></li>
+            <li><a href="kontak.html">Contact</a></li>
+            <li><a href="AboutUs.html">About me</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div class="container">
+        <img src="ml.jpg" class="priview-img" id="priview-img" alt="">
+        <div class="galleries">
+            <img src="ml.jpg" onclick="imgPriview(this.src)" alt="">
+            <img src="pubg.jpeg" onclick="imgPriview(this.src)" alt="">
+            <img src="valo.jpeg" onclick="imgPriview(this.src)" alt="">
+            <img src="fc.jpeg" onclick="imgPriview(this.src)" alt="">
+        </div>
+    </div>
+    <script>
+        const imgPriview = (src) =>{
+            document.getElementById('priview-img').src = src
+        }
+    </script>
+</body>
+</html>

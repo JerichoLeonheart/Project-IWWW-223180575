@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>Superhero Guess</title>
+        <style>
+        *{
+            color: white;
+        }
+        body {
+            background-image: url('gambar/5671166.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .tombol {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5vw;
+            color: white;
+            background-color: black;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .tombol:hover {
+            background-color: #333;
+        }
+        .tombol:focus {
+            outline: 2px solid #00f;
+        }
+        #container {
+            margin-top: 2%;
+            border: 5px solid black;
+            height: 550px;
+            width: 600px;
+        }
+        #containerQuest{
+            border: 5px solid black;
+            height: 50px;
+            width: 100px;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            margin-left: 50vw;
+        }
+        #containerAns{
+            border: 5px solid black;
+            height: 200px;
+            width: 200px;
+            margin-left: 47vw;
+        }
+        #superman{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 200px;
+            left: 50px;
+        }
+        #batman{
+            height: 50px;
+            width: 50px;
+            position: absolute;     
+            top: 200px;
+            left: 100px;       
+        }
+        #thor{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 200px;
+            left: 150px;
+        }
+        #hulk{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+        #spiderman{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 200px;
+            left: 250px;
+        }
+        #ironman{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 200px;
+            left: 300px;
+        }
+        </style>
+</head>
+
+<body>
+    <input class="tombol" type="button" onclick="start()" value="Start" aria-label="Start">
+    <a href="index.html" class="tombol" style="height: 17px; width: 50px; position: absolute; left: 60vw; text-align: center; text-decoration: none;">Back</a>
+    <div id="container">
+        <img src="gambar\superman.png" id="superman" alt="" style="position:absolute;top:200px;left:50px;">
+        <img src="gambar\batman.png" id="batman" alt="" style="position:absolute;top:200px;left:100px;">
+        <img src="gambar\thor.png" id="thor" alt="" style="position:absolute;top:200px;left:150px;">
+        <img src="gambar\spiderman.png" id="spiderman" alt="" style="position:absolute;top:200px;left:200px;">
+        <img src="gambar\hulk.png" id="hulk" alt="" style="position:absolute;top:200px;left:250px;">
+        <img src="gambar\ironman.png" id="ironman" alt="" style="position:absolute;top:200px;left:300px;">
+
+    </div>
+    <p style= "font-weight: bold; font-size: 30px; margin-left: 50vw; margin-top: -62vh;"><span id="score">Score: 0</span></p>
+    <p style="border: 5px solid black; height: 50px; width: 260px; font-size: 35px; font-weight: bold; text-align: center; margin-left: 47vw;"><span id="randomWord"></span></p>
+    <p style="font-weight: bold; font-size: 30px;  margin-left: 47vw; margin-top: -25px;">Drop here</p>
+    <div style="margin-top: -28px;" id="containerAns"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="tugas.js"></script>
+</body>
+</html>
+
